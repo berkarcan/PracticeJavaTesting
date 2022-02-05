@@ -1,3 +1,5 @@
+package com.cybertek.OOP_Practice;
+
 public class Item {
   
    //private instance variables
@@ -14,20 +16,21 @@ public class Item {
      * @param price
      *
      * assigns to values to instance variables
-     */
-    public Item(String name,int quantity,int catalogNumber, double price)
-    {
-      
-      
-      
-    }
 
-    /**
+     */
+ public Item(String name, int catalogNumber, int quantity, double price) {
+  this.name = name;
+  this.catalogNumber = catalogNumber;
+  this.quantity = quantity;
+  this.price = price;
+ }
+
+ /**
      * setter for name instance variable
      * @param name
      */
     public void setName(String name) {
-       
+       this.name=name;
     }
 
     /**
@@ -35,7 +38,7 @@ public class Item {
      * @param price
      */
     public void setPrice(double price) {
-       
+       this.price=price;
     }
 
     /**
@@ -44,7 +47,7 @@ public class Item {
      */
     public double getPrice() {
         
-        return 0.0;
+        return price;
     }
 
     /**
@@ -53,28 +56,27 @@ public class Item {
      */
     public String getName(){
       
-      
-        return null;
+        return name;
     }
 
 
     public int getQuantity(){
        //TODO
-        return -1;
+        return quantity;
 
     }
     public void setQuantity(int quantity){
          //TODO
-
+        this.quantity=quantity;
     }
 
     public int getCatalogNumber(){
       //TODO
-        return -1;
+        return catalogNumber;
     }
 
     public void setCatalogNumber(int catalogNumber) {
-       
+       this.catalogNumber=catalogNumber;
        
     }
 
@@ -85,7 +87,7 @@ public class Item {
      */
     @Override
     public String toString() {
-        return "";
+        return "Regular Item{name='"+this.name+"', catalogNumber="+this.catalogNumber+", quantity="+this.quantity+", price="+this.price+"}";
     }
   
 }

@@ -1,4 +1,5 @@
-  import java.util.*;
+package com.cybertek.OOP_Practice;
+import java.util.*;
 
 /**
  * represents basic Color class example
@@ -35,6 +36,7 @@ public class Color {
      */
     public Color(int r, int g, int b){
        //TODO
+        this.rgb=new int[]{r,g,b};
     }
 
     /**
@@ -43,6 +45,7 @@ public class Color {
      */
     public Color() {
         //TODO
+        this(255,255,255);
     }
 
     /**
@@ -68,10 +71,34 @@ public class Color {
      */
     public String toString() {
         
-
        //TODO
-       
-        return null; //change this to return colors
+        String[] Names={"white", "light gray", "gray", "dark gray", "black", "red", "pink", "orange", "yellow", "green", "magenta", "cyan", "blue"};
+        int[][] colors={WHITE, LIGHT_GRAY, GRAY, DARK_GRAY, BLACK, RED, PINK, ORANGE, YELLOW, GREEN, MAGENTA, CYAN, BLUE};
+        int i=0;
+        for (int[] color : colors) {
+            if(Arrays.equals(color, this.rgb)){
+                return Names[i];
+            }
+            i++;
+        }
+        return "n/a"; //change this to return colors
+    }
+
+
+    public static void main(String[] args) {
+        Color color = new Color();
+        System.out.println(color.toString() );
+
+        color = new Color(255, 0, 0);
+        System.out.println(color.toString() ) ;
+
+        color = new Color(255, 100, 0);
+        System.out.println(color.toString() ) ;
+
+        Color color4  = new Color(192, 192, 192);
+        System.out.println(color4 ) ;
+
+        System.out.println(color4 ) ;
     }
 
 }

@@ -1,3 +1,4 @@
+package com.cybertek.OOP_Practice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +7,7 @@ import java.util.List;
  * represents TJMaxx store class.
  * https://tjmaxx.com/
  */
-public class TJMaxx {
+public class TJMaxx  {
 
     /**
      * Private lists to hold regular Item objects
@@ -21,7 +22,8 @@ public class TJMaxx {
      */
     public TJMaxx() {
         //TODO
-        
+       this.regularItems= new ArrayList<>();
+       this.onSaleItems=new ArrayList<>();
     }
 
     /**
@@ -29,8 +31,7 @@ public class TJMaxx {
      * @param item
      */
     public void addRegularItem(Item item) {
-       
-       
+       regularItems.add(item);
     }
 
     /**
@@ -38,8 +39,7 @@ public class TJMaxx {
      * @param item
      */
     public void addOnSaleItem(OnSaleItem item) {
-        
-        
+        onSaleItems.add(item);
     }
 
     /**
@@ -48,7 +48,7 @@ public class TJMaxx {
      */
     public List<Item> getRegularItems() {
         //TODO change from null 
-        return null;
+        return regularItems;
     }
 
     /**
@@ -57,7 +57,7 @@ public class TJMaxx {
      */
     public List<OnSaleItem> getOnSaleItems() {
          //TODO change from null 
-        return null;
+        return onSaleItems;
     }
 
     /**
@@ -66,7 +66,7 @@ public class TJMaxx {
      */
     public int regularItemsCount() {
          //TODO change from -1 
-        return -1;
+        return regularItems.size();
     }
 
     /**
@@ -75,7 +75,7 @@ public class TJMaxx {
      */
     public int onSaleItemsCount() {
         //TODO change from -1 
-        return -1;
+        return onSaleItems.size();
     }
 
     /**
@@ -84,10 +84,16 @@ public class TJMaxx {
      * @return
      */
     public List<String> getAllItemNames() {
+       ArrayList list=new ArrayList();
+
+        for (int i = 0; i < regularItems.size(); i++) {
+             list.add(regularItems.get(i).getName());
+        }
+        for (int i = 0; i < onSaleItems.size(); i++) {
+            list.add(onSaleItems.get(i).getName());
+        }
        
-       
-       
-       return null;
+       return list;
     }
 
     /**
@@ -98,9 +104,20 @@ public class TJMaxx {
      */
     public double getItemPrice(int catalogNumber)
     {
-       
+        for (int i = 0; i < regularItemsCount(); i++) {
+            if(regularItems.get(i).getCatalogNumber()==catalogNumber){
+                return regularItems.get(i).getPrice();
+            }
+        }
+        for (int i = 0; i < onSaleItemsCount(); i++) {
+            if(onSaleItems.get(i).getCatalogNumber()==catalogNumber){
+                return onSaleItems.get(i).getPrice();
+            }
+        }
         return 0.0;
     }
+
+
 
     /**
      * accepts a name then searches
@@ -111,8 +128,13 @@ public class TJMaxx {
      */
     public OnSaleItem getOnSaleItem(String name)
     {
-        
-        
+
+        for (int i = 0; i < onSaleItemsCount(); i++) {
+            if(onSaleItems.get(i).getName().equalsIgnoreCase(name)){
+                return onSaleItems.get(i);
+            }
+        }
+
         return null;
     }
 
@@ -123,6 +145,18 @@ public class TJMaxx {
      * @param catalogNumber
      */
     public void removeItem(int catalogNumber) {
+
+        for (int i = 0; i < regularItemsCount(); i++) {
+            if(regularItems.get(i).getCatalogNumber()==catalogNumber){
+                regularItems.remove(i);
+            }
+        }
+        for (int i = 0; i < onSaleItemsCount(); i++) {
+            if(onSaleItems.get(i).getCatalogNumber()==catalogNumber){
+                onSaleItems.remove(i);;
+            }
+        }
+
         
     }
 
@@ -136,8 +170,23 @@ public class TJMaxx {
      * @param catalogNumber
      */
     public void buyItem(int catalogNumber) {
-       
-       
+
+        for (int i = 0; i < regularItemsCount(); i++) {
+            if(regularItems.get(i).getCatalogNumber()==catalogNumber){
+                regularItems.get(i).setQuantity(regularItems.get(i).getQuantity()-1);
+                if(regularItems.get(i).getQuantity()==0){
+                    removeItem(catalogNumber);
+                }
+            }
+        }
+        for (int i = 0; i < onSaleItemsCount(); i++) {
+            if(onSaleItems.get(i).getCatalogNumber()==catalogNumber){
+                onSaleItems.get(i).setQuantity(onSaleItems.get(i).getQuantity()-1);
+                if(onSaleItems.get(i).getQuantity()==0){
+                    removeItem(catalogNumber);
+                }
+            }
+        }
        
        
     }

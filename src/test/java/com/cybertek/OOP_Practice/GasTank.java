@@ -15,7 +15,7 @@ public class GasTank {
   }
 
   public void useGas(double v){
-    amount--;
+    amount-=v;
     if (amount<0){amount=0;}
   }
 
@@ -24,13 +24,13 @@ public class GasTank {
     }else{
       return false;}
   }
-    public Boolean isFull(){
+  public Boolean isFull(){
       if(amount>capacity-0.1){return true;
       }else{
         return false;}
-    }
+  }
 
-    public Double getGasLevel(){
+  public Double getGasLevel(){
     return amount;
     }
 
@@ -40,6 +40,19 @@ public class GasTank {
       return difference;
     }
 
+  public static void main(String[] args) {
+    GasTank gasTank=new GasTank(10);
+    System.out.println("gasTank.isEmpty() = " + gasTank.isEmpty());
+    gasTank.addGas(1.5);
+    gasTank.addGas(10.5);
+    System.out.println("gasTank.isEmpty() = " + gasTank.isEmpty());
+    System.out.println("gasTank.getGasLevel() = " + gasTank.getGasLevel());
+    gasTank.useGas(9);
+    System.out.println("gasTank.getGasLevel() = " + gasTank.getGasLevel());
+    System.out.println("the difference is = " + gasTank.fillUp());
+    gasTank.fillUp();
+    System.out.println("gasTank.isFull() = " + gasTank.isFull());
+  }
 
 
 }

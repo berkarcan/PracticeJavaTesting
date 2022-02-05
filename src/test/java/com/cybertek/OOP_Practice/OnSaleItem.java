@@ -1,3 +1,4 @@
+package com.cybertek.OOP_Practice;
 
 /**
  * SubClass of Item
@@ -21,7 +22,8 @@ public class OnSaleItem extends Item {
      * - assigns discount
      */
     public OnSaleItem(String name,int quantity,int catalogNumber,double price, double discount) {
-      
+      super(name, catalogNumber, quantity,price-discount);
+      this.discount=discount;
     }
 
     /**
@@ -30,7 +32,7 @@ public class OnSaleItem extends Item {
      */
     public double getDiscount() {
       //TODO
-        return 0.0;
+        return discount;
     }
 
     /**
@@ -38,7 +40,7 @@ public class OnSaleItem extends Item {
      * @param discount
      */
     public void setDiscount(double discount) {
-       
+       this.discount=discount;
     }
 
     /**
@@ -50,6 +52,6 @@ public class OnSaleItem extends Item {
      */
     @Override
     public String toString() {
-        return "";
+        return "OnSaleItem{discount="+this.discount+"%, name="+this.getName()+", price="+this.getPrice()+"}";
     }
 }
